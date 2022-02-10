@@ -1,7 +1,6 @@
-## Welcome to Kaveori
+## Welcome to MsGiraffe
 
 The bot can record expenses and incomes and can also tell you the weather
-You can try to write to him https://t.me/KaveoriBot
 
 ### Code
 
@@ -75,7 +74,7 @@ markupdos = ReplyKeyboardMarkup().add(
 async def start_cmd_handler(message: types.Message):
     if (not BotDB.user_exists(message.from_user.id)):
         BotDB.add_user(message.from_user.id)
-    await message.answer("Доброго времяни суток:) \nЯ - Kaveori☕️, бот который може посчитать ваши доходы и расходы, подсказать погоду и уведомит о новой статье на любимом сайте. Бот Создан @DaniilSemizhonov"
+    await message.answer("Доброго времяни суток:) \nЯ - MsGiraffe, бот который може посчитать ваши доходы и расходы, подсказать погоду и уведомит о новой статье на любимом сайте. Бот Создан @DaniilSemizhonov"
                      ,reply_markup=markupstart)
 
 @dp.message_handler(Text(equals="Назад"))
