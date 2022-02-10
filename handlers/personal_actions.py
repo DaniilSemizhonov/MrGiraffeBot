@@ -1,13 +1,3 @@
-## Welcome to Kaveori
-
-The bot can record expenses and incomes and can also tell you the weather
-You can try to write to him https://t.me/KaveoriBot
-
-### Code
-
-This is the main bot script
-personal_actions.py
-```markdown
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import Text
 from dispatcher import dp, bot
@@ -182,14 +172,3 @@ async def start(message: types.Message):
         await message.reply(answer)
     else:
         await message.reply("Записей не обнаружено!")
-```
-
-
-### Using the code
-
-If you want to use the code, you need to replace the telegram bot token and the pyowm token
-
-### Support or Contact
-
-My telegram @DaniilSemizhonov
-Email Daniil_Semizhonov@mail.ru
