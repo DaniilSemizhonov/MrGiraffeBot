@@ -3,9 +3,8 @@ from aiogram.dispatcher.filters import Text
 from dispatcher import dp, bot
 import pyowm
 from pyowm.utils.config import get_default_config
-import logging
-import config
 import re
+from mg import get_map_cell
 from main import BotDB
 from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
@@ -19,6 +18,7 @@ config_dict['language'] = 'ru'
 
 button1 = KeyboardButton('Погода')
 button2 = KeyboardButton('Бухгалтерия')
+button3 = KeyboardButton('Калькулятор')
 
 buttonuss = KeyboardButton('Москва')
 buttonvla = KeyboardButton('Владивосток')
@@ -28,6 +28,7 @@ buttondo = KeyboardButton('💵Доход')
 buttonras = KeyboardButton('💸Расход')
 buttonhis = KeyboardButton('💰История')
 buttonrestart = KeyboardButton('Назад')
+
 
 rasbutton50 = KeyboardButton('💸Потратил  50')
 rasbutton100 = KeyboardButton('💸Потратил 100')
@@ -65,8 +66,11 @@ markupdos = ReplyKeyboardMarkup().add(
 async def start_cmd_handler(message: types.Message):
     if (not BotDB.user_exists(message.from_user.id)):
         BotDB.add_user(message.from_user.id)
-    await message.answer("Доброго времяни суток:) \nЯ - Kaveori☕️, бот который може посчитать ваши доходы и расходы, подсказать погоду и уведомит о новой статье на любимом сайте. Бот Создан @DaniilSemizhonov"
+    await message.answer("Доброго времяни суток:) \nЯ - Ms.Giraffe️, бот который може посчитать ваши доходы и расходы, подсказать погоду сайте."
                      ,reply_markup=markupstart)
+    await message.answer("Бот cоздан @DaniilSemizhonov, <a href=\"https://github.com/DaniilSemizhonov/MsGiraffeBot\">GitHub</a>"
+                     ,reply_markup=markupstart, parse_mode='html')
+
 
 @dp.message_handler(Text(equals="Назад"))
 async def start_cmd_handler(message: types.Message):
@@ -79,7 +83,7 @@ async def start_cmd_handler(message: types.Message):
     w = observation.weather
     temp = w.temperature('celsius')['temp']
 
-    answer = "В " + Moscow + "е" + " сейчас " + w.detailed_status
+    answer = "В " + "Москве" + " сейчас " + w.detailed_status
     answer += " температура: " + str(temp) + "°"
 
     await message.answer(answer, reply_markup=markupstart)
@@ -110,7 +114,6 @@ async def with_puree(message: types.Message):
 @dp.message_handler(Text(equals="💵Доход"))
 async def with_puree(message: types.Message):
     await message.reply("Сколько получил?", reply_markup=markupdos)
-
 
 @dp.message_handler(commands = ("Потратил", "Заработал"), commands_prefix = "💸💵")
 async def start(message: types.Message):
