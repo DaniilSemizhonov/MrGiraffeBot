@@ -1,6 +1,7 @@
 ## Welcome to MsGiraffe
 
 The bot can record expenses and incomes and can also tell you the weather
+You can write to him https://t.me/MsGiraffeBot
 
 ### Code
 
