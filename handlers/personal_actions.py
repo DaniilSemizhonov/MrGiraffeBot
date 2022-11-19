@@ -4,8 +4,8 @@ from dispatcher import dp, bot
 import pyowm
 from pyowm.utils.config import get_default_config
 import re
-from mg import get_map_cell
-from main import BotDB
+#from mg import get_map_cell
+from bot import BotDB
 from aiogram.types import ReplyKeyboardRemove, \
     ReplyKeyboardMarkup, KeyboardButton, \
     InlineKeyboardMarkup, InlineKeyboardButton
